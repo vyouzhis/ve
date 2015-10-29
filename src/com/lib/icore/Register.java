@@ -7,7 +7,6 @@ import org.ppl.etc.globale_config;
 import org.ppl.io.Encrypt;
 import org.ppl.io.TimeClass;
 
-import com.lib.common.SurfaceFooter;
 
 public class Register extends BaseSurface {
 	private String className = null;
@@ -40,10 +39,6 @@ public class Register extends BaseSurface {
 		
 		setRoot("register_ok", ucl.BuildUrl("register_ok", ok_action));
 		
-		SurfaceFooter footer = new SurfaceFooter();	
-		footer.setRoot("register_js", "1");
-		footer.filter();
-		footer_html = footer.getHtml();
 		super.View();
 	}
 }

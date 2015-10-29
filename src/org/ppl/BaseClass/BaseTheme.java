@@ -2,6 +2,9 @@ package org.ppl.BaseClass;
 
 import org.ppl.common.ShowMessage;
 
+import com.lib.common.Footer;
+import com.lib.common.Header;
+
 public abstract class BaseTheme extends BaseView implements BaseThemeInterface {
 	protected boolean isAutoHtml = true;
 	private boolean ajax = false;
@@ -33,7 +36,18 @@ public abstract class BaseTheme extends BaseView implements BaseThemeInterface {
 	}
 
 	private void common() {
+		if (header_html.length() == 0) {
+			Header header = new Header();
+			header.filter();
+			header_html = header.getHtml();
 
+		}
+		if (footer_html.length() == 0) {
+			Footer footer = new Footer();
+			footer.filter();
+			footer_html = footer.getHtml();
+
+		}
 	}
 
 	public void TipMessage(String url, String msg) {

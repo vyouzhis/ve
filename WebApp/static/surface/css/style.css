@@ -942,7 +942,7 @@ table th{
 /* Hero block one */
 
 .hero-block-one{
-	width:275px;
+	width:295px;
 	float:left;
 	margin-right:7px;
 }
@@ -1023,7 +1023,7 @@ table th{
 	margin-top:17px;
 	padding:7px 5px;
 	border-radius:7px;
-	width:190px;
+	width:250px;
 	float:left;
 }	
 
@@ -1072,7 +1072,7 @@ table th{
 	margin-top:17px;
 	padding:5px 0px 5px 3px;
 	border-radius:7px;
-	width:325x;
+	width:385x;
 	float:left;
 }
 
@@ -1081,7 +1081,7 @@ table th{
 	padding:5px;
 	height:67px;
 	border-radius:5px;
-	width:180px;
+	width:150px;
 	position:relative;
 	right:-3px;
 }

@@ -5,7 +5,6 @@ import org.ppl.common.ShowMessage;
 import org.ppl.etc.UrlClassList;
 import org.ppl.io.TimeClass;
 
-import com.lib.common.SurfaceFooter;
 
 public class icore_login extends BaseSurface {
 	private String className = null;
@@ -35,10 +34,6 @@ public class icore_login extends BaseSurface {
 		setRoot("icore_url", ucl.BuildUrl("icore_login_action", tc.time() + ""));
 		setRoot("salt", salt);
 
-		SurfaceFooter footer = new SurfaceFooter();
-		footer.setRoot("register_js", "1");
-		footer.filter();
-		footer_html = footer.getHtml();
 
 		super.View();
 	}

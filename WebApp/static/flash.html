@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+ <style>
+   #player {
+   	position: relative;
+     display: block;
+     width: 100%;
+     height: 700px;
+     margin: 0;
+     z-index: -100;
+   }
+   #audio {
+     width: 300px;
+     height: 40px;
+   }
+   #player *:focus, #audio *:focus {
+     outline-style: none;
+     position: relative;
+     z-index: -100;
+   }
+ </style>
+ <script src="http://localhost:8080/ve/static/surface/js/flowplayer-3.2.13.min.js"></script>
+ <script src="http://localhost:8080/ve/static/surface/js/flowplayer.ipad-3.2.14-dev.js"></script>
+  <script type="text/javascript">
+         
+  window.onload = function () {
+
+	  $f("player", "http://localhost:8080/ve/static/surface/js/flowplayer-3.2.18.swf", {
+	      plugins: {
+	        rtmp: {
+	          url: "http://localhost:8080/ve/static/surface/js/flowplayer.rtmp-3.2.13.swf",
+	          netConnectionUrl: "rtmpt://192.168.1.209:5080/oflaDemo"
+	        },
+	        controls: {
+	          scrubber: true,
+	        }
+	      },
+	      clip: {
+	        scaling: "fit"
+	      },
+	      logo: {
+	        url: 'http://flash.flowplayer.org/media/img/player/acme.png',
+	        fullscreenOnly: false,
+	        displayTime: 2000
+	      },
+	      
+	      playlist: [{
+	        url: "/ve/static/surface/img/1443174024.png"
+	      }, {
+	        provider: "rtmp",
+	        url: "screen_share",
+	        live: true,
+	        bufferLength: 0,
+	        bufferTime: 0,
+	        autoPlay: false,
+	      }],
+	      contextMenu: [
+	    // 1. "About Flowplayer...";  selecting this item goes to our homepage
+	    {'vyouzhi About Flowplayer ...' : function() {
+	        location.href = "http://www.flowplayer.org";
+	    }},
+	 
+	    // 2. menu separator.
+	    '-',
+	 
+	    // 3. version information.
+	    'kkFlowplayer 3.2.18'
+	    ]
+	    }).ipad();
+	  };      
+  </script>
+</head>
+<body>
+<div id="player" style="z-index:-1;"></div>
+</body>
+</html>

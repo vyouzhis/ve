@@ -19,6 +19,7 @@ public class icore extends BaseiCore {
 //			
 //			return ;
 //		}
+		setRoot("d", "d");
 		super.View();
 	}
 }

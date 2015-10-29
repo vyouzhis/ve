@@ -46,6 +46,82 @@
       
       <!-- Javascript for this page -->
       
+      
+       <script  type="text/javascript">
+            //var ws = new WebSocket("ws://localhost:8080/bi/WsChatServlet"); org.apache.catalina.websocket
+            
+            document.onkeydown = function(e){
+		        if(!e) e = window.event;//»ðºüÖÐÊÇ window.event
+		        if((e.keyCode || e.which) == 13){
+		        	postToServer();
+		        }
+		    }
+            
+            var msgformat = "<li class='by-user_me'>"+				
+				"<div class='avatar logostyle'>"+
+				"<img src='${static_images_uri}/user_logo'/>"+
+				"</div>"+
+				"<div class='chat-content'>"+				  
+				"<div class='chat-meta'> user_name <span class='pull-right'>user_time</span></div> user_msg "+					  				 
+				"<div class='clearfix'></div></div></li>";
+			var allMsgJson = [];
+			var msgInt = 0;
+            var ws = new WebSocket("ws://localhost:8080/ve/WsChatServlet");
+            ws.onopen = function(){
+            };
+            ws.onmessage = function(message){
+            	console.log("message:"+message.data);
+            	var msgJson = JSON.parse(message.data);
+            	allMsgJson[msgInt] = msgJson;
+            	msgInt++;
+            	var msg = "", msgtmp="";
+            	
+            	for(var n in allMsgJson){								
+					//console.log(table[i][n].volume+"--"+table[i][n].dial);
+					var me="me";
+					var logo = "avatar5.png";
+					var logostyle = "pull-left"
+					if(allMsgJson[n].user_me=="1") {
+						me="other";
+						logo = "user2.jpg";
+						logostyle = "pull-right";
+					}
+					
+				   msgtmp = msgformat.replace("user_me", me);
+				   //msgtmp = msgtmp.replace("user_logo", allMsgJson[n].user_logo);
+				   msgtmp = msgtmp.replace("user_logo", logo);
+				   msgtmp = msgtmp.replace("logostyle", logostyle);
+				   msgtmp = msgtmp.replace("user_name", allMsgJson[n].user_name);
+				   
+				   msgtmp = msgtmp.replace("user_time", formatDate(allMsgJson[n].user_time ));
+				   msgtmp = msgtmp.replace("user_msg", allMsgJson[n].user_msg);
+				   msg+= msgtmp;
+				 }
+            	            	
+            	$("#chat_msg").html(msg);
+            	$('.500-scroll').slimScroll({ scrollBy: '600px' });
+                //document.getElementById("chatlog").textContent += message.data + "\n";
+            };
+            function postToServer(){
+                ws.send($("#chatmsg").val());
+                $("#chatmsg").val("");
+            }
+            function closeConnect(){
+                ws.close();
+            }
+            
+            function   formatDate(timestamp )   {    
+            	var now = new Date(parseInt(timestamp)*1000);
+                var   year=now.getYear();     
+                var   month=now.getMonth()+1;     
+                var   date=now.getDate();     
+                var   hour=now.getHours();     
+                var   minute=now.getMinutes();     
+                var   second=now.getSeconds();     
+                return   month+"-"+date+" "+hour+":"+minute+":"+second;     
+           }    
+        </script>
+        
       <script type="text/javascript">
          
        
