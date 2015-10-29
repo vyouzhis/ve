@@ -14,11 +14,11 @@ public class icore extends BaseiCore {
 	@Override
 	public void Show() {
 		// TODO Auto-generated method stub
-		echo("dd");
-		if(super.Init()==-1){
-			
-			return ;
-		}
+		
+//		if(super.Init()==-1){
+//			
+//			return ;
+//		}
 		super.View();
 	}
 }
