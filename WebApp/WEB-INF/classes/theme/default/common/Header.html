@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Sheldon</title>
+	<!-- Description, Keywords and Author -->
+	<meta name="description" content="Your description">
+	<meta name="keywords" content="Your,Keywords">
+	<meta name="author" content="ResponsiveWebInc">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Styles -->
+	<!-- jQuery UI -->
+	<link href="${static_css_uri}/jquery-ui.css" rel="stylesheet">
+	<!-- Bootstrap CSS -->
+	<link href="${static_css_uri}/bootstrap.min.css" rel="stylesheet">
+	
+	
+	<!-- jQuery Gritter -->
+	<link href="${static_css_uri}/jquery.gritter.css" rel="stylesheet">
+	<!-- Bootstrap Switch -->
+	<link href="${static_css_uri}/bootstrap-switch.css" rel="stylesheet">
+	<!-- jQuery Datatables -->
+	<link href="${static_css_uri}/jquery.dataTables.css" rel="stylesheet">
+	<!-- Rateit -->
+	<link href="${static_css_uri}/rateit.css" rel="stylesheet">
+	<!-- jQuery prettyPhoto -->
+	<link href="${static_css_uri}/prettyPhoto.css" rel="stylesheet">
+	<!-- Full calendar -->
+	<link href="${static_css_uri}/fullcalendar.css" rel="stylesheet">		
+	<!-- Font awesome CSS -->
+	<link href="${static_css_uri}/font-awesome.min.css" rel="stylesheet">		
+	<!-- Custom CSS -->
+	<link href="${static_css_uri}/style.css" rel="stylesheet">
+	
+	<!--[if IE]>
+		<link rel="stylesheet" type="text/css" href="${static_css_uri}/style-ie.css" />
+	<![endif]-->
+           
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="index.html#">
+	 <style>
+   #player {
+   	position: relative;
+     display: block;
+     width: 100%;
+     height: 700px;
+     margin: 0;
+     z-index: -100;
+   }
+   #audio {
+     width: 300px;
+     height: 40px;
+   }
+   #player *:focus, #audio *:focus {
+     outline-style: none;
+     position: relative;
+     z-index: -100;
+   }
+ </style>
+ <script src="${static_js_uri}flowplayer-3.2.13.min.js"></script>
+   <script src="${static_js_uri}flowplayer.ipad-3.2.14-dev.js"></script>
+ <script type="text/javascript">
+        
+        window.onload = function () {
+
+		    $f("player", "${static_js_uri}flowplayer-3.2.18.swf", {
+		      plugins: {
+		        rtmp: {
+		          url: "${static_js_uri}flowplayer.rtmp-3.2.13.swf",
+		          netConnectionUrl: "rtmpt://192.168.1.209:5080/oflaDemo"
+		        },
+		        controls: {
+		          scrubber: true,
+		        }
+		      },
+		      clip: {
+		        scaling: "fit"
+		      },
+		      logo: {
+		        url: 'http://flash.flowplayer.org/media/img/player/acme.png',
+		        fullscreenOnly: false,
+		        displayTime: 2000
+		      },
+		      
+		      playlist: [{
+		        url: "img/1443174024.png"
+		      }, {
+		        provider: "rtmp",
+		        url: "screen_share",
+		        live: true,
+		        bufferLength: 0,
+		        bufferTime: 0,
+		        autoPlay: false,
+		      }],
+		      contextMenu: [
+		    // 1. "About Flowplayer...";  selecting this item goes to our homepage
+		    {'vyouzhi About Flowplayer ...' : function() {
+		        location.href = "http://www.flowplayer.org";
+		    }},
+		 
+		    // 2. menu separator.
+		    '-',
+		 
+		    // 3. version information.
+		    'kkFlowplayer 3.2.18'
+		    ]
+		    }).ipad();
+		  };
+		  </script>
+</head>

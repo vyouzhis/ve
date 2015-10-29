@@ -1,0 +1,169 @@
+<!-- Scroll to top -->
+      <span class="totop"><a href="index.html#"><i class="fa fa-chevron-up"></i></a></span> 
+		
+	  <!-- Javascript files -->
+	  <!-- jQuery -->
+	  <script src="${static_js_uri}/jquery.js"></script>
+      <!-- jQuery UI -->
+      <script src="${static_js_uri}/jquery-ui.min.js"></script>
+	  <!-- Bootstrap JS -->
+	  <script src="${static_js_uri}/bootstrap.min.js"></script>
+      <!-- Sparkline for Mini charts -->
+      <script src="${static_js_uri}/sparkline.js"></script>
+      
+      <!-- jQuery flot -->
+      <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="${static_js_uri}/excanvas.min.js"></script><![endif]-->
+      <script src="${static_js_uri}/jquery.flot.min.js"></script>     
+      <script src="${static_js_uri}/jquery.flot.pie.min.js"></script>
+      <script src="${static_js_uri}/jquery.flot.resize.min.js"></script>
+	  
+	  <!-- jQuery Knob -->
+	  <script src="${static_js_uri}/jquery.knob.js"></script>
+	  <!-- jQuery Data Tables -->
+	  <script src="${static_js_uri}/jquery.dataTables.min.js"></script>
+	  <!-- jQuery Knob -->
+	  <script src="${static_js_uri}/bootstrap-switch.min.js"></script>
+	  <!-- jQuery Knob -->
+	  <script src="${static_js_uri}/jquery.rateit.min.js"></script>
+	  <!-- jQuery prettyPhoto -->
+	  <script src="${static_js_uri}/jquery.prettyPhoto.js"></script>
+	  <!-- jquery slim scroll -->
+	  <script src="${static_js_uri}/jquery.slimscroll.min.js"></script>
+	  <!-- jQuery gritter -->
+	  <script src="${static_js_uri}/jquery.gritter.min.js"></script>
+	  <!-- jQuery full calendar -->
+	  <script src="${static_js_uri}/moment.min.js"></script>
+	  <script src="${static_js_uri}/fullcalendar.min.js"></script>
+	  <!-- Respond JS for IE8 -->
+	  <script src="${static_js_uri}/respond.min.js"></script>
+	  <!-- HTML5 Support for IE -->
+	  <script src="${static_js_uri}/html5shiv.js"></script>
+	  <!-- Custom JS -->
+	  <script src="${static_js_uri}/custom.notification.js"></script>
+	  
+  	
+	  <script src="${static_js_uri}/custom.js"></script>
+      
+      <!-- Javascript for this page -->
+      
+      <script type="text/javascript">
+         
+       
+         
+         <!-- Quick chart -->         
+         $(function() {
+            var d1 = [[0, 1], [1, 2], [2, 3], [3, 4],[4, 5], [5, 6], [6, 5], [7, 6],[8, 7], [9, 6], [10, 7], [11, 8],[12, 9], [13, 9], [14, 9], [15, 8],[16, 8], [17, 9], [18, 10], [19, 10],[20, 9], [21, 8], [22, 7], [23, 8],[24, 9], [25, 8], [26, 6], [27, 4],[28, 2]];
+			var options = {
+               series: {
+                  lines: {
+                     show: true, fill: true, fillColor: "rgba(113,214,232,0.5)", lineWidth:1
+                  },
+                  points: {
+                     show: true, fill: true, fillColor: "rgba(113,214,232,0.5)"
+                  }
+               },
+               colors :["rgba(255,255,255,1)"],
+               grid: {
+                  color: "#fff", borderWidth: 0, minBorderMargin: 5
+               },
+               xaxis: {
+                  font: {
+                        size: 10,
+                        color: "rgba(255,255,255,0.8)"
+                    }
+               },
+               yaxis: {
+                  font: {
+                        size: 10,
+                        color: "rgba(255,255,255,0.8)"
+                    }
+               }
+            };
+            <!-- Actual plotting -->
+            $.plot("#quick-chart", [ d1 ], options);
+         });
+      
+	  
+		<!-- ECG chart -->         
+         $(function() {
+            var d1 = [[0,0], [1, 2], [2, 0], [3, 3], [4, 1], [5, 3], [6, 2], [7, 1], [8, 2], [9, 3], [10, 1], [11,2], [12,0]];
+			var options = {
+               series: {
+                  lines: {
+                     show: true, fill: false, lineWidth:1
+                  },
+                  points: {
+                     show: true, fill: false, radius:2
+                  }
+               },
+               colors :["rgba(255,255,255,1)"],
+               grid: {
+                  color: "#fff", borderWidth: 0, minBorderMargin: 8
+               },
+               xaxis: {
+				  show: false
+               },
+               yaxis: {
+				  show: false
+               }
+            };
+            <!-- Actual plotting -->
+            $.plot("#ecg-chart", [ d1 ], options);
+         });
+		 
+         <!-- TV chart -->   
+		 
+		$(function () {
+
+			/* Bar Chart starts */
+
+			var d1 = [];
+			for (var i = 0; i <= 50; i += 1)
+				d1.push([i, parseInt(Math.random() * 30)]);
+
+			var d2 = [];
+			for (var i = 0; i <= 40; i += 1)
+				d2.push([i, parseInt(Math.random() * 30)]);
+	
+	
+			$.plot($("#tv-chart"), [ d1, d2 ], {
+				series: {
+					stack: 0,
+					lines: { show: false },
+					bars: { show: true, barWidth: 0.2 }
+				},
+				grid: {
+					borderWidth: 0, labelMargin:5, color:"#bbb"
+				},
+				colors: ["#ff6c24", "#ff2424"],
+				bars: {
+				    show: true,
+					lineWidth:4,
+					fill: true,
+					fillColor: { colors: [ { opacity: 0.9 }, { opacity: 0.8 } ] }
+				},
+				xaxis:{
+					tickLength:0,
+					font:{
+						size:11,
+						color:"#888"
+					}
+				},
+				yaxis:{
+					tickLength:0,
+					font:{
+						size:11,
+						color:"#888"
+					}
+				}
+			});
+			
+			/* Bar chart ends */
+
+		});
+
+		 
+      </script>
+      
+	</body>	
+</html>
