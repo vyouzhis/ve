@@ -51,7 +51,7 @@
             //var ws = new WebSocket("ws://localhost:8080/bi/WsChatServlet"); org.apache.catalina.websocket
             
             document.onkeydown = function(e){
-		        if(!e) e = window.event;//»ğºüÖĞÊÇ window.event
+		        if(!e) e = window.event;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ window.event
 		        if((e.keyCode || e.which) == 13){
 		        	postToServer();
 		        }
@@ -103,7 +103,13 @@
                 //document.getElementById("chatlog").textContent += message.data + "\n";
             };
             function postToServer(){
-                ws.send($("#chatmsg").val());
+            	var msgarr = {};
+            	msgarr['msg'] = $("#chatmsg").val();
+            	
+            	msgarr['to'] = $("#chatmsg").val();  //æ˜¯å¦ç§èŠ
+            	msgarr['who'] = $("#chatmsg").val();  //èŠå¤©å¯¹åƒ
+            	
+                ws.send(JSON.stringify(msgarr));
                 $("#chatmsg").val("");
             }
             function closeConnect(){

@@ -47,12 +47,15 @@ public class WsChatServlet extends WebSocketServlet {
 			mmiList.remove(this);
 		}
 
+		@SuppressWarnings("unchecked")
 		@Override
 		public void onTextMessage(CharBuffer cb) throws IOException {
 			// System.out.println("Accept Message : "+ cb);
 			TimeClass tcClass = TimeClass.getInstance();
 			// List<Map<String, Object>> tMsg = new ArrayList<>();
-
+			String cbJson = cb.toString();
+			Map<String, Object> cbObject = JSON.parseObject(cbJson, Map.class);
+			
 			for (MyMessageInbound mmib : mmiList) {
 				// CharBuffer buffer = CharBuffer.wrap(cb);
 				Map<String, Object> welcome = new HashMap<String, Object>();
@@ -65,7 +68,7 @@ public class WsChatServlet extends WebSocketServlet {
 				welcome.put("user_logo", "avatar5.png");
 				welcome.put("user_name", "discovery");
 				welcome.put("user_time", tcClass.time());
-				welcome.put("user_msg", cb.toString());
+				welcome.put("user_msg", cbObject.get("msg").toString());
 				String msgJson = JSON.toJSONString(welcome);
 
 				mmib.myoutbound.writeTextMessage(CharBuffer.wrap(msgJson));
@@ -100,7 +103,7 @@ public class WsChatServlet extends WebSocketServlet {
 	protected StreamInbound createWebSocketInbound(String arg0,
 			HttpServletRequest arg1) {
 		// TODO Auto-generated method stub
-		System.out.println("WsChatServlet 1");
+		
 		return new MyMessageInbound();
 	}
 
